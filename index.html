@@ -7,8 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A blog about lorem ipsum dolor sit amet</title>
-  <meta name="description" content="A blog about lorem ipsum dolor sit amet">
+  <title>Taylor Ferreira</title>
+  <meta name="description" content="Personal development portfolio">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://tyfee.github.io/portfolio/main.css">
 </head>
@@ -16,8 +17,9 @@
 
   <body>
 
-      
-<div id="particles-js">
+
+<div id="container">
+ 
   <div class="header">
       <h1>
         <span class="site-title">Taylor Ferreira</span>
@@ -38,8 +40,8 @@
       </div>
   </div>
   <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
-</div>
 
+ </div>
 
       <section id="about">
         
@@ -50,12 +52,12 @@
   <div class="user">
     <div class="tech">
       <h2>Frontend</h2>
-      <i class="devicon-react-original-wordmark colored"></i>
-      <i class="devicon-vuejs-plain colored"></i>
-      <i class="devicon-bootstrap-plain-wordmark colored"></i>
-      <i class="devicon-nextjs-original colored"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+      <i class="devicon-react-original-wordmark colored te"></i>
+      <i class="devicon-vuejs-plain colored te"></i>
+      <i class="devicon-bootstrap-plain-wordmark colored te"></i>
+      <i class="devicon-nextjs-original colored te"></i>
+      <p>In frontend web development i mainly work with the React and Vue frameworks, though i have participated in projects using Svelte as well.
+      </p>
     </div>
 
     <div class="tech">
@@ -63,8 +65,9 @@
       <i class="devicon-flask-plain colored"></i>
       <i class="devicon-express-original colored"></i>      
       <i class="devicon-rails-plain colored"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+      <p>In backend web development i mainly work with Ruby, Python and Jvascript environments, though Rust and Go are also languagues that i am accostumed to use for that purpose. My go to frameworks are FastAPI, Express and Sinatra.
+
+      </p>
     </div>
 
     <div class="tech">
@@ -73,8 +76,7 @@
       <i class="devicon-ruby-plain colored"></i>
       <i class="devicon-nodejs-plain-wordmark colored"></i>
       <i class="devicon-rust-plain colored"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+      <p></p>
     </div>
       <div class="tech">
         <h2> Frameworks </h2>
@@ -185,3 +187,62 @@
 
 
   </body>
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/+esm'
+    // Create scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize((window.innerWidth / 1.01), window.innerHeight);
+    const container = document.getElementById('container');
+    container.appendChild(renderer.domElement);
+
+
+    const cubes = [];
+    // Create a cube with a basic material
+
+    const colors = [
+  0x00ff00,   // Green
+  0x00ffff,   // Cyan
+  0x00ff00ff, // Magenta
+  0xff0000,   // Red
+  0xff00ff,   // Yellow
+  0xffff00,   // Blue
+  0xff0000ff, // Purple
+  0xffa500,   // Orange
+  0x0000ff,   // Yellow
+  // Add more colors as needed
+];
+    for (let i = 0; i < 10; i++) {
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)], transparent: true, opacity: 0.7});
+        const cube = new THREE.Mesh(geometry, material);
+
+        // Position the cubes in a grid
+        cube.position.x = Math.floor(Math.random() * 15 - 9)
+        cube.position.y = Math.floor(Math.random() * 7 - 3)
+
+        cubes.push(cube);
+        scene.add(cube);
+      
+    }
+    // Set the camera position
+    camera.position.z = 7;
+
+    // Create an animation loop
+    const animate = function () {
+      requestAnimationFrame(animate);
+
+      // Rotate the cube
+      cubes.forEach(cube => {
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      });
+
+      // Render the scene
+      renderer.render(scene, camera);
+    };
+
+    // Run the animation loop
+    animate();
+  </script>
